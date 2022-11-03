@@ -19,9 +19,9 @@ const Home = () => {
       <header>
         <nav id="hero">
           <ul>
-          <li><Link to="/adminsignup" className="btn">Admin</Link></li>
-          <li><Link to="/doctorsignup" className="btn">Doctor</Link></li>
-          <li><Link to="/managersignup" className="btn">Manager</Link></li>
+          <li><Link to="/adminsignin" className="btn">Admin</Link></li>
+          <li><Link to="/doctorsignin" className="btn">Doctor</Link></li>
+          <li><Link to="/managersignin" className="btn">Manager</Link></li>
           <li><Link to="/signin" className="btn">Registrar</Link></li>
           </ul>
 
