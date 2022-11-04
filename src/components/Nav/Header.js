@@ -1,31 +1,41 @@
-import React from "react";
-import home from "./images/house.svg"
-import { Link } from "react-router-dom";
-import {FaUserAlt} from 'react-icons/fa'
-import chat from "./images/chat-left.svg"
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
-
-function Header (){
-    return(
-        <div>
-             <nav id="nav" className="navbar navbar-light">
-    <div className="container-fluid">
-    <div>
-        <a href="/">
-        <img src={home}  alt="home icon" />
-        </a>
-    </div>
-    <div>
-    <a href="mailto:ngilaian@gmail.com">
-        <img src={chat}  alt="home icon" />
-        </a>
-        <a href="mailto:ngilaian@gmail.com">
-       <Link to='/signup'> <FaUserAlt/> </Link> 
-        </a>
-    </div>
-    </div>
-    </nav>
-        </div>
-    )
+function NavBar() {
+  return (
+    <Navbar bg="light" expand="lg">
+      <Container fluid>
+        <Navbar.Brand href="#">Silver Crest Hospital</Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className="me-auto my-2 my-lg-0"
+            style={{ maxHeight: '100px' }}
+            navbarScroll
+          >
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/doctorsignin">Doctors</Nav.Link>
+            <Nav.Link href="/signin">Registrar</Nav.Link>
+            <Nav.Link href="/pharmacy">Pharmacy</Nav.Link>
+            
+          </Nav>
+          <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button variant="outline-success">Search</Button>
+          </Form>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
 }
-export default Header
+
+export default NavBar;

@@ -16,17 +16,17 @@ import LogoutIcon from "@mui/icons-material/Logout";
 // const Nav = ({ setUser, user }) => {
 //   console.log(user)
 //   const navigate = useNavigate()
-//   const onHandleLogoutClick = () => {
-//     fetch("/users/signout", {
-//       method: "DELETE",
-//     }).then((res) => {
-//       if (res.ok) {
-//         user && setUser(null);
-//         alert("successfully logged out");
-//         navigate("/");
-//       }
-//     });
-//   };
+  // const onHandleLogoutClick = () => {
+  //   fetch("/users/signout", {
+  //     method: "DELETE",
+  //   }).then((res) => {
+  //     if (res.ok) {
+  //       user && setUser(null);
+  //       alert("successfully logged out");
+  //       navigate("/");
+  //     }
+  //   });
+  // };
 
 //   return (
 
@@ -86,6 +86,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
+import {useNavigate} from 'react-router-dom'
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
@@ -106,7 +107,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import ManIcon from '@mui/icons-material/Man';
 import ScienceOutlinedIcon from '@mui/icons-material/ScienceOutlined';
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card'
 
 
@@ -177,7 +178,24 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function MiniDrawer() {
+export default function MiniDrawer({ setUser, user }) {
+  const navigate = useNavigate()
+
+// ==============================================
+
+const onHandleLogoutClick = () => {
+  fetch("/users/signout", {
+    method: "DELETE",
+  }).then((res) => {
+    if (res.ok) {
+      user && setUser(null);
+      alert("successfully logged out");
+      navigate("/");
+    }
+  });
+};
+// ==========================================
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -190,7 +208,7 @@ export default function MiniDrawer() {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
@@ -201,92 +219,79 @@ export default function MiniDrawer() {
             edge="start"
             sx={{
               marginRight: 5,
-              ...(open && { display: 'none' }),
+              ...(open && { display: "none" }),
             }}
           >
-
             <MenuIcon />
-
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Main Navigation
+            <Link to="/">Main Navigation</Link>
           </Typography>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            {theme.direction === "rtl" ? (
+              <ChevronRightIcon />
+            ) : (
+              <ChevronLeftIcon />
+            )}
           </IconButton>
         </DrawerHeader>
         <Divider />
         <List>
-          {[ <NavLink exact to="/admin" activeClassName="activeClicked">
-                <p>Admin</p>
-                </NavLink>,
-                <NavLink exact to="/pharmacy" activeClassName="activeClicked">
-
-                <p>Pharmacy</p>
-
-
+          {[
+            <NavLink exact to="/admin" activeClassName="activeClicked">
+              <p>Admin</p>
+            </NavLink>,
+            <NavLink exact to="/pharmacy" activeClassName="activeClicked">
+              <p>Pharmacy</p>
             </NavLink>,
             <NavLink exact to="/doctor" activeClassName="activeClicked">
+              <p>Doctor</p>
+            </NavLink>,
 
-            <p>Doctor</p>
+            <NavLink exact to="/registrar" activeClassName="activeClicked">
+              <p>Registrar</p>
+            </NavLink>,
+            <NavLink exact to="/patient" activeClassName="activeClicked">
+              <p>Shift</p>
+            </NavLink>,
 
-
-        </NavLink>,
-
-         <NavLink exact to="/registrar" activeClassName="activeClicked">
-
-         <p>Registrar</p>
-
-
-     </NavLink>,
-        <NavLink exact to="/patient" activeClassName="activeClicked">
-
-        <p>Shift</p>
-
-    </NavLink>,
-
-
-    <NavLink exact to="/laboratory" activeClassName="activeClicked">
-
-    <p>Laboratory</p>
-
-</NavLink>].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+            <NavLink exact to="/laboratory" activeClassName="activeClicked">
+              <p>Laboratory</p>
+            </NavLink>,
+          ].map((text, index) => (
+            <ListItem key={text} disablePadding sx={{ display: "block" }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
+                  justifyContent: open ? "initial" : "center",
                   px: 2.5,
                 }}
               >
                 <ListItemIcon
                   sx={{
                     minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
                   }}
                 >
-                   {index % 2 === 0 ? <ManIcon /> : <ScienceOutlinedIcon />}
-
+                  {index % 2 === 0 ? <ManIcon /> : <ScienceOutlinedIcon />}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
           ))}
-          <LogoutIcon />
-           <Divider />
+          
+          <LogoutIcon onClick={onHandleLogoutClick} />
+          <Divider />
           {/* <button>Logout</button> */}
         </List>
-
-
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-
       </Box>
     </Box>
   );

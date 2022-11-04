@@ -1,5 +1,6 @@
 import React, {useState} from "react"
 import "../pages/App.css"
+import { Container,Row, Col } from "react-bootstrap"
 
 const Registrar=(props)=>{
 const[formData, setFormData] = useState({
@@ -31,6 +32,7 @@ const handlePostSubmit = (event) =>{
   })
     .then((res) => res.json())
     .then(setFormData)
+    setFormData({ticket_no:"", address:""})
   console.log(formData);
 }
 const handleChange = (event) => {
@@ -40,50 +42,74 @@ const handleChange = (event) => {
   });
 };
   return(
-//
+<>
+{/* <body id="signup"> */}
+<Container>
+      <Row>
+        <Col md={2}></Col>
+        <Col md={8}>
+        <div className="formWrapper">
+      <div className="form">
+        <h2>Silver Crest Hospital</h2>
+        <form onSubmit={handlePostSubmit} id="form" method="get" action="#">
+          <div className="inputWrapper">
+            <input type="text"name="ticket_no" id="first" onChange={handleChange}required />
+            <label htmlFor="first">Ticket Number</label>
+          </div>
+          <div className="inputWrapper">
+            <input type="text" name="patient_no" id="last" onChange={handleChange} required />
+            <label htmlFor="last">Patient Name</label>
+          </div>
+          <div className="inputWrapper">
+            <input type="reg_date" name="reg_date" id="reg_date" required onChange={handleChange}/>
+            <label htmlFor="reg_date">Registration Date</label>
+          </div>
+          <div className="inputWrapper">
+            <input type="Address" name="address" id="Address" onChange={handleChange} required />
+            <label htmlFor="Address">Address</label>
+          </div>
+          <div className="inputWrapper">
+            <input type="dob" name="dob" id="dob"onChange={handleChange} required />
+            <label htmlFor="dob">Date of Birth</label>
+          </div>
+          <div className="inputWrapper">
+            <input type="contact_no" name="contact_no" id="contact_no" onChange={handleChange}required />
+            <label htmlFor="contact_no">Phone Number</label>
+          </div>
+          <div className="inputWrapper">
+            <input type="email" name="email" id="email" onChange={handleChange}required />
+            <label htmlFor="email">Email</label>
+          </div>
+          <div className="inputWrapper">
+            <input type="tel" name="guardian" id="guardian" onChange={handleChange}required />
+            <label htmlFor="guardian">Guardian Contact</label>
+          </div>
+          <div className="inputWrapper">
+            <input type="relation" name="relation" id="relation" onChange={handleChange}required />
+            <label htmlFor="relation">Guardian Relation</label>
+          </div>
+          <div className="inputWrapper">
+            <input type="gender" name="gender" id="gender" onChange={handleChange}required />
+            <label htmlFor="gender"> gender</label>
+          </div>
+          <div className="inputWrapper">
+            <input type="patient_status" name="patient_status" id="patient_status" onChange={handleChange}required />
+            <label htmlFor="patient_status"> patient_status</label>
+          </div>
+        </form>
+        <input form="form" type="submit" name="register" id="register" value="REGISTER" />
 
 
-
-  <div id="registrar" className="form-wrapper">
-    <form onSubmit={handlePostSubmit} className="fcorn-register container">
-      <p className="register-info">Note: All fields are required.</p>
-      <div className="row">
-        <p className="col-md-6"><input type="text" placeholder="Ticket Number"  name="ticket_no" onChange={handleChange}  required/></p>
-        <p className="col-md-6"><input type="text" placeholder="Patient Name" name="username" onChange={handleChange}  required/></p>
       </div>
-      <p><input type="email" placeholder="Email Address" name="email" onChange={handleChange} required/>
-         <span className="extern-type">We'll keep this private.</span>
-      </p>
-      {/* <p><input type="password" placeholder="Password" required/>
-        <span className="extern-type">Atleast 8 characters long.</span>
-      </p>
-      <p><input type="password" placeholder="Verify Password" required/></p> */}
-      <div className="row">
-        <p className="col-md-4"><input type="text" placeholder="Registration Date" name="reg_date"  onChange={handleChange} required/></p>
-        <p className="col-md-4"><input type="date" id="birthday" name="dob" placeholder="calendar" onChange={handleChange} required/></p>
-        <p className="col-md-4"><input type="text" placeholder="Contact" name="contact_no" onChange={handleChange} required/></p>
-        <p className="col-md-12"><input type="text" name="guardian" placeholder="Parent/Guardian contact" onChange={handleChange}/><span className="extern-type">For emergencies</span></p>
-      </div>
-      <div className="row">
-          <div>
-           <label> Gender
-          <select onChange={handleChange} name="gender">
-          <option value="0" selected disabled>Gender</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Non binary">Non binary</option>
-          </select>
-          </label>
+    </div></Col>
+        <Col md={2}></Col>
+      </Row>
+    </Container>
 
-        </div>
-        </div>
-        <div>
-      </div>
-        <br/>
-        <p class="register-submit"><input type="submit" value="Register Now"/></p>
-			</form>
-    </div>
+ 
+{/* </body> */}
+</>
   )
 }
 
-export default Registrar
+export default Registrar;
