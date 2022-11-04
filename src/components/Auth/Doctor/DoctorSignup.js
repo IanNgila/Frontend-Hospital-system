@@ -46,7 +46,7 @@ const SignUp = ({ setLogin }) => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    fetch("/doctors/signup", {
+    fetch("https://mighty-fjord-86271.herokuapp.com/doctors/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

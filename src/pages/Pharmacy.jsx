@@ -50,7 +50,7 @@ const Pharmacy = ({ handlePosting}) => {
 
     function handleSubmit(e){
         e.preventDefault();
-        fetch(`/Pharmacy`,{
+        fetch(`https://mighty-fjord-86271.herokuapp.com/pharma`,{
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

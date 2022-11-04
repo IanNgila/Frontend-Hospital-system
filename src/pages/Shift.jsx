@@ -5,7 +5,7 @@ const Shift = () => {
   const [shifts, setShifts] = useState([]);
 
   const getShifts = async () => {
-    const res = await fetch("/staffs");
+    const res = await fetch("https://mighty-fjord-86271.herokuapp.com/staffs");
     const data = await res.json();
     setShifts(data);
     console.log(shifts);

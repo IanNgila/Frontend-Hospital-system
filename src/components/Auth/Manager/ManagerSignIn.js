@@ -35,7 +35,7 @@ const ManagerSignIn = ({ setUser }) => {
     e.preventDefault();
     // post doctor credentialas to login route
 
-    fetch("/managers/signin", {
+    fetch("https://mighty-fjord-86271.herokuapp.com/managers/signin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

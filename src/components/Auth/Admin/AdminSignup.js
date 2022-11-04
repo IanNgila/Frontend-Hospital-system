@@ -46,7 +46,7 @@ const AdminSignUp = ({ setLogin }) => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    fetch("/admin/signup", {
+    fetch("https://mighty-fjord-86271.herokuapp.com/admin/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

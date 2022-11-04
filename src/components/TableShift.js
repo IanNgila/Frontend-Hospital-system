@@ -13,7 +13,7 @@ const Tableshift = ({ shifts }) => {
   const { id } = useParams();
   const handleDelete = () => {
     console.log(id)
-    fetch(`/shifts/${id}`, {
+    fetch(`https://mighty-fjord-86271.herokuapp.com/shifts/${id}`, {
       // mode: 'no-cors',
       method: "DELETE",
     }).then(() => {

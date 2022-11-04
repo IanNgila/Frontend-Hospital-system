@@ -34,7 +34,7 @@ const AdminSignIn = ({ setUser }) => {
     e.preventDefault();
     // post user credentialas to login route
 
-    fetch("/doctors/signin", {
+    fetch("https://mighty-fjord-86271.herokuapp.com/doctors/signin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

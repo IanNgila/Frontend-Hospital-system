@@ -51,7 +51,7 @@ const handleChange = (event) => {
       <div className="logo">
         <img height="64" src="https://thumbs.dreamstime.com/b/caduceus-medical-symbol-isolated-white-background-d-render-caduceus-medical-symbol-isolated-145721309.jpg" alt="Panda Logo" />
         <h1>
-          <span className="name"><span>Touching</span><span>Lives</span></span>Foundation
+          <span className="name"><span></span></span>Silver Crest Hospital
         </h1>
       </div>
       {/* <span className="copyright">Photo by
@@ -62,7 +62,7 @@ const handleChange = (event) => {
 
     <div className="formWrapper">
       <div className="form">
-        <h2>Silver Crest Hospital</h2>
+        <h2>Registrar Form</h2>
         <form onSubmit={handlePostSubmit} id="form" method="get" action="#">
           <div className="inputWrapper">
             <input type="text"name="ticket_no" id="first" onChange={handleChange}required />
@@ -73,8 +73,8 @@ const handleChange = (event) => {
             <label htmlFor="last">Patient Name</label>
           </div>
           <div className="inputWrapper">
-            <input type="reg_date" name="reg_date" id="reg_date" required onChange={handleChange}/>
-            <label htmlFor="reg_date">Registration Date</label>
+            <input type="date" name="reg_date" id="reg_date" required onChange={handleChange}/>
+            <label htmlFor="reg_date"></label>
           </div>
           <div className="inputWrapper">
             <input type="Address" name="address" id="Address" onChange={handleChange} required />

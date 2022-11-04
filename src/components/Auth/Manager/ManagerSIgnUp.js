@@ -29,7 +29,7 @@ const ManagerSignUp = ({ setLogin }) => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    fetch("/managers/signup", {
+    fetch("https://mighty-fjord-86271.herokuapp.com/managers/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

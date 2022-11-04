@@ -13,7 +13,7 @@ const Doctor = () => {
   // };
   useEffect(() => {
     const getPatients = async () => {
-      const res = await fetch("/patients");
+      const res = await fetch("https://mighty-fjord-86271.herokuapp.com/patients");
       const data = await res.json();
       console.log(data);
       setPatients(data);
@@ -24,12 +24,12 @@ const Doctor = () => {
   return (
     // <TablePatient patients={patients}/>
 
-    <div class="row">
+    <div className="row">
       {/* <!-- Card --> */}
       {patients.map((patient) => {
         return (
           <>
-            <div class="col-md-4">
+            <div className="col-md-4">
               <PatientCard patient={patient} />
             </div>
           </>
